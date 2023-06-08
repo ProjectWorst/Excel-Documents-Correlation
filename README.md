@@ -1,7 +1,9 @@
 # Project-Python-Cosine
 
-Purpose: This capability allows me to compare/correlate information from separate documents using cosine calculations within the Python program.
+Purpose: This program allows me to compare/correlate information from separate documents using cosine calculations to establish a desired threshold.
 Normally, without this capability and depending on how large the data set is, this task could take over a few weeks/months trying to make determinations on my own.  
+
+- A significant feature this code allows is to simply change the established calculation threshold to determine which created report fits your needs. 
 
 The following are the imports and downloads required to make sure the necessary Python capabilities are in place before the rest of your code is established. 
  
