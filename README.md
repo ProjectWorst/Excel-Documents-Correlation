@@ -1,4 +1,4 @@
-# Python-Cosine-Correlation
+# Project-Python-Cosine
 
 Purpose: This capability allows me to compare/correlate information from separate documents using cosine calculations within the Python program.
 Normally, without this capability and depending on how large the data set is, this task could take over a few weeks/months trying to make determinations on my own.  
