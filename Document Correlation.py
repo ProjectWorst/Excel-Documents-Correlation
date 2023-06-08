@@ -42,27 +42,30 @@ def preprocess_text(text):
         preprocessed_text = ' '.join(tokens)
 
         return preprocessed_text
+    elif isinstance(text, (int, float)):
+        # Convert numerical value to string
+        return str(text)
     else:
         return ''
 
 # Apply the preprocess_text function to preprocess the text data in specific columns of df1 and df2.
 # Preprocess text data in df1.
-df1['PEC'] = df1['PEC'].apply(preprocess_text)
-df1['Justification'] = df1['Justification'].apply(preprocess_text)
-df1['Impact if not Funded'] = df1['Impact if not Funded'].apply(preprocess_text)
+df1['column1 title'] = df1['column1 title'].apply(preprocess_text)
+df1['column2 title'] = df1['column2 title'].apply(preprocess_text)
+df1['column3 title'] = df1['column3 title'].apply(preprocess_text)
 
 # Preprocess text data in df2.
-df2['PEC'] = df2['PEC'].apply(preprocess_text)
-df2['Justification'] = df2['Justification'].apply(preprocess_text)
-df2['Impact if not Funded'] = df2['Impact if not Funded'].apply(preprocess_text)
+df2['column1 title'] = df2['column1 title'].apply(preprocess_text)
+df2['column2 title'] = df2['column2 title'].apply(preprocess_text)
+df2['column3 title'] = df2['column3 title'].apply(preprocess_text)
 
 # Initialize the TF-IDF vectorizer.
 tfidf_vectorizer = TfidfVectorizer()
 
 # Fit the vectorizer on the preprocessed text data from df1 using fit_transform to learn the vocabulary and convert the text into a matrix representation. 
-tfidf_matrix1 = tfidf_vectorizer.fit_transform(df1['PEC'] + ' ' + df1['Justification'] + ' ' + df1['Impact if not Funded'])
+tfidf_matrix1 = tfidf_vectorizer.fit_transform(df1['column1 title'] + ' ' + df1['column2 title'] + ' ' + df1['column3 title'])
 # Transform the preprocessed text data from df2 using transform to convert it into a matrix representation.
-tfidf_matrix2 = tfidf_vectorizer.transform(df2['PEC'] + ' ' + df2['Justification'] + ' ' + df2['Impact if not Funded'])
+tfidf_matrix2 = tfidf_vectorizer.transform(df2['column1 title'] + ' ' + df2['column2 title'] + ' ' + df2['column3 title'])
 
 # Calculate cosine similarity between each pair of requirements.
 similarity_matrix = cosine_similarity(tfidf_matrix1, tfidf_matrix2)
@@ -96,12 +99,12 @@ for req1_idx, req2_idx in correlated_requirements:
 # Iterate through the 'report' list and extract the columns used for calcuation from req1_details and req2_details and assign them to individual variables.
 # This allows you to work with the data individually if needed. 
 for req1_details, req2_details in report:
-    req1_PEC = req1_details['PEC']
-    req2_PEC = req2_details['PEC']
-    req1_justification = req1_details['Justification']
-    req2_justification = req2_details['Justification']
-    req1_impactifnotfunded = req1_details['Impact if not Funded']
-    req2_impactifnotfunded = req2_details['Impact if not Funded']
+    req1_column1 = req1_details['column1 title']
+    req2_column1 = req2_details['column1 title']
+    req1_column2 = req1_details['column2 title']
+    req2_column2 = req2_details['column2 title']
+    req1_column3 = req1_details['column3 title']
+    req2_column3 = req2_details['column3 title']
  
 # Extract the relevant columns required for the output report by combining the column names from df1 and df2.
 FY_column_list = list(df1.columns[1:]) + list(df2.columns[1:])
