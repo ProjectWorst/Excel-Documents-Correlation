@@ -3,7 +3,7 @@
 Purpose: This capability allows me to compare/correlate information from separate documents using cosine calculations within the Python program.
 Normally, without this capability and depending on how large the data set is, this task could take over a few weeks/months trying to make determinations on my own.  
 
-The following are the steps and explanations performed to make sure the necessary capabilities are in place before your code is established. 
+The following are the imports and downloads required to make sure the necessary Python capabilities are in place before the rest of your code is established. 
  
 1) import pandas as pd
 2) import nltk
@@ -15,7 +15,7 @@ The following are the steps and explanations performed to make sure the necessar
 8) nltk.download('stopwords')
 9) nltk.download('punkt')
 
-Below are explanations of each step listed above: 
+Below are explanations of each import and download mentioned above: 
 
 1) `pandas` (imported as `pd`): Pandas is a powerful library for data manipulation and analysis. It provides data structures and functions for efficiently handling and processing structured data, such as tables or spreadsheets. With pandas, you can load, transform, filter, and analyze data easily.
 
