@@ -85,6 +85,14 @@ for i in range(similarity_matrix.shape[0]):
     # Check if the maximum similarity is above the threshold
     if max_similarity >= similarity_threshold:
         correlated_requirements.append((i, max_similarity_idx))
+        
+uncorrelated_rows = []
+
+# Iterate through the rows of df2 and check if the index of the row is present in correlated_requirements. 
+# If it's not, add the index to the uncorrelated_rows list.
+for row_idx in range(len(df2)):
+    if row_idx not in [req2_idx for _, req2_idx in correlated_requirements]:
+        uncorrelated_rows.append(row_idx)
 
 #create an empty list to store the correlated requirement details. 
 report = []
@@ -118,7 +126,15 @@ for req1_idx, req2_idx in correlated_requirements:
     req1_details = df1.iloc[req1_idx].tolist()
     req2_details = df2.iloc[req2_idx].tolist()
     report_data.append(req1_details[1:] + req2_details[1:])
+    
+for row_idx in uncorrelated_rows:
+    req_details = df2.iloc[row_idx].tolist()
+    # Create a list with empty values for columns from df1
+    empty_values = [""] * len(df1.columns[1:])
+    # Combine the empty values with the uncorrelated row details from df2 and add "Uncorrelated" at the end
+    report_data.append(["Uncorrelated"] + empty_values + req_details[1:])
 
-# Export the report to create an Excel file.
-report_df = pd.DataFrame(report_data, columns=FY_column_list)
+# Export the report to an Excel file
+FY_column_list_with_flag = ["Correlation"] + FY_column_list
+report_df = pd.DataFrame(report_data, columns=FY_column_list_with_flag)
 report_df.to_excel("Path to File", index=False)
