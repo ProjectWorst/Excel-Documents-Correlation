@@ -1,4 +1,4 @@
-# Excel Documents Comparison Program
+# Excel Documents Correlation Program
 
 This program allows you to compare requirements from two different Excel documents and export the data as a single Excel document for analysis. It utilizes various libraries for data manipulation, natural language processing, and machine learning.
 
