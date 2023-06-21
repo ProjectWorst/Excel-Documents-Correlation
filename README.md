@@ -1,6 +1,6 @@
 # Excel Documents Correlation Program
 
-I created this program to allows you to determine correlations from two different Excel documents and export the data as a single Excel document for analysis. It utilizes various libraries for data manipulation, natural language processing, and machine learning.
+I created this program to determine correlations from two different Excel documents and export the data as a single Excel document for analysis. It utilizes various libraries for data manipulation, natural language processing, and machine learning.
 
 ## Prerequisites
 
